@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bidsCabinet.iml" filepath="$PROJECT_DIR$/.idea/bidsCabinet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/gitBitCabinet.iml" filepath="$PROJECT_DIR$/.idea/gitBitCabinet.iml" />
     </modules>
   </component>
 </project>
