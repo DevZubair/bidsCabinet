@@ -3,6 +3,28 @@ html,body{
 }
 
 
+select{
+
+    /* Size and position */
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+
+    /* Styles */
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+
+    /* Font settings */
+    font-weight: bold;
+    color: #8AA8BD;
+}
+
+
 .yourTeamsPageBackground {
     background-image: url("../img/backgroundImage3.png");
     position: fixed;
@@ -122,10 +144,7 @@ html,body{
 
 
 }
-.teamNameLabel > input
-{
-    border-bottom: thin solid gray;
-}
+
 
 .teamNameLabel > textarea
 {
