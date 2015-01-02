@@ -1,8 +1,8 @@
 
 
-myApp.controller('loginController',function($scope,$state,$http,$rootScope,OpenFB,$location){
+myApp.controller('loginController',function($scope,$state,$http,$rootScope,$facebook){
 
-    //For web, add $facebook
+
 
     $rootScope.allGroups=[];
     $rootScope.allTeamData=[];
@@ -11,20 +11,11 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,OpenF
 
     $rootScope.userName='';
 
-    $scope.facebookLogin = function () {
 
-        OpenFB.login('email,read_stream,publish_stream').then(
-            function () {
-                $location.path('/yourTeam');
-            },
-            function () {
-                alert('OpenFB login failed');
-            });
-    };
 
     //For Web Facebook Login
 
-   /* $scope.login = function() {
+    $scope.login = function() {
         $facebook.login().then(function() {
             refresh();
 
@@ -64,7 +55,7 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,OpenF
 
                 $http.get('http://localhost:8000/api/findGroups')
                     .success(function(data){
-                        alert('asdadsd');
+
                         if(data){
                             $rootScope.allGroups=data;
                             for(var i=0;i<$rootScope.allGroups.length;i++)
@@ -83,7 +74,7 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,OpenF
 
                     }
                 );
-                *//*  $state.go('ionBarStripped.yourTeam');*//*
+                /*  $state.go('ionBarStripped.yourTeam');*/
             },
             function(err) {
                 $scope.welcomeMsg = "Please log in";
@@ -92,5 +83,5 @@ myApp.controller('loginController',function($scope,$state,$http,$rootScope,OpenF
 
     refresh();
 
-*/
+
 });

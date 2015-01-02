@@ -47,7 +47,7 @@ myApp.controller('createTeam',function($scope,$http,$rootScope,$state){
                         $rootScope.yourCreatedTeam=[];
                         $rootScope.allTeamData=[];
 
-                        alert('asdadsd');
+
                         if(data){
                             $rootScope.allGroups=data;
                             for(var i=0;i<$rootScope.allGroups.length;i++)

@@ -4,37 +4,17 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-//For web, ngFacebook in the injection
 
-var myApp=angular.module('starter', ['ionic','openfb']);
 
-myApp.run(function($ionicPlatform,$rootScope,$window, OpenFB,$state) {
+var myApp=angular.module('starter', ['ionic','ngFacebook']);
 
-    //For web,add $facebook
+myApp.run(function($ionicPlatform) {
 
-    OpenFB.init('778214432215760');
-
-    $ionicPlatform.ready(function () {
-        if (window.StatusBar) {
-            StatusBar.styleDefault();
-        }
-    });
-
-    $rootScope.$on('$stateChangeStart', function(event, toState) {
-        if (toState.name !== "home" && toState.name !== "app.logout" && !$window.sessionStorage['fbtoken']) {
-            $state.go('home');
-            event.preventDefault();
-        }
-    });
-
-    $rootScope.$on('OAuthException', function() {
-        $state.go('home');
-    });
 
 
     //Code starts for Web Facebook Login
 
-  /*  (function(){
+    (function(){
         // If we've already installed the SDK, we're done
         if (document.getElementById('facebook-jssdk')) {return;}
 
@@ -50,11 +30,11 @@ myApp.run(function($ionicPlatform,$rootScope,$window, OpenFB,$state) {
 
         // Insert the Facebook JS SDK into the DOM
         firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
-    }());*/
+    }());
 
     //SDK ends for Web Facebook Login
 
-    /*  $ionicPlatform.ready(function() {
+     $ionicPlatform.ready(function() {
      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
      // for form inputs)
      if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -64,14 +44,13 @@ myApp.run(function($ionicPlatform,$rootScope,$window, OpenFB,$state) {
      StatusBar.styleDefault();
      }
      });
-     */
+
 
 
 });
 
-myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider,$facebookProvider) {
 
-    //For web, add $facebookProvider
 
     $httpProvider.defaults.useXDomain = true;
 
@@ -80,9 +59,11 @@ myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     //SDK for Web Login Facebook
-    /* $facebookProvider.setAppId('778214432215760');
+    $facebookProvider.setAppId('778214432215760');
      $facebookProvider.setVersion("v2.2");
-*/
+
+
+
 
     $urlRouterProvider.otherwise('/');
 
@@ -149,35 +130,24 @@ myApp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         })
 
 
-        .state('loginPage.ionBarStriped.yourCreatedTeams.createTeam',{
 
-            url:'/createTeam',
-            templateUrl: "templates/createTeamPage.html",
-            controller: 'createTeam'
-
-        })
-
-        .state('loginPage.ionBarStriped.yourCreatedTeams.teamInfo',{
+        .state('ionBarStripped.teamInfo',{
 
             url:'/teamInfo',
+            views:{
+                yourTeamTab:{
             templateUrl: "templates/teamInfo.html",
-            controller: 'teamController'
+            controller: 'teamInfoController'
+
+                }
+            }
 
         })
-
-        .state('loginPage.ionBarStriped.allTeams.teamInfo',{
-
-            url:'/teamInfo',
-            templateUrl: "templates/teamInfo.html",
-            controller: 'teamController'
-
-        });
-
-
 
 
 
 });
+
 
 myApp.controller('HomeTabCtrl', function($scope,$facebook) {
 
